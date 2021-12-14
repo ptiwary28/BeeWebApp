@@ -1,0 +1,120 @@
+﻿@using BeeWebApp;
+
+@model BeeListViewModel
+
+@{
+    ViewData["Title"] = "View";
+}
+
+<h1>View</h1>
+
+<p>
+    <a asp-action="Create">Bee Details</a>
+</p>
+<table class="table">
+    <thead>
+        <tr>
+            <th>Worker</th>
+        </tr>
+    </thead>
+    <tbody>
+        <tr>
+            <th>Health</th>
+            <th>Dead/Alive </th>
+            <th>Action</th>
+        </tr>
+        @foreach (Worker worker in Model.Workers)
+        {
+            <tr>
+                <td>
+                    @worker.Health
+                </td>
+                <td>
+                    @if (worker.Dead)
+                    {
+                        <p>Dead</p>
+                    }
+                    else
+                    {
+                        <p>Alive</p>
+                    }
+                </td>
+                <td>
+                    <input type="button" name="button" class="button1" value="Edit" />
+                </td>
+            </tr>
+        }
+    </tbody>
+</table>
+<table class="table">
+    <thead>
+        <tr>
+            <th>Drone</th>
+        </tr>
+    </thead>
+    <tbody>
+        <tr>
+            <th>Health</th>
+            <th>Dead/Alive </th>
+            <th>Action</th>
+        </tr>
+        @foreach (Drone drone in Model.Drones)
+        {
+            <tr>
+                <td>
+                    @drone.Health
+                </td>
+                <td>
+                    @if (drone.Dead)
+                    {
+                        <p>Dead</p>
+                    }
+                    else
+                    {
+                        <p>Alive</p>
+                    }
+                </td>
+                <td>
+                    <input type="button" name="button" class="button1" value="Edit" />
+                </td>
+            </tr>
+        }
+    </tbody>
+</table>
+<table class="table">
+    <thead>
+        <tr>
+            <th>Drone</th>
+        </tr>
+    </thead>
+    <tbody>
+        <tr>
+            <th>Health</th>
+            <th>Dead/Alive </th>
+            <th>Action</th>
+        </tr>
+        @foreach (Queen queen in Model.Queens)
+        {
+            <tr>
+                <td>
+                    <p id="QueenHealth"@queen.Id> @queen.Health</p>
+                </td>
+                <td>
+                    @if (queen.Dead)
+                    {
+                        <p>Dead</p>
+                    }
+                    else
+                    {
+                        <p>Alive</p>
+                    }
+                </td>
+                <td>
+                    <input type="button" name="button" class="button1" onclick="QueenClick(@queen.Id)" value="Edit"@queen.Id/>
+                </td>
+            </tr>
+        }
+
+    </tbody>
+</table>
+
